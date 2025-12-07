@@ -8,8 +8,9 @@
  
 import SwiftUI
 
-struct StoryViewer: View {
-    @Environment(\.dismiss) private var dismiss
+public struct StoryViewer: View {
+    @Environment(\.presentationMode) private var presentationMode
+
 
     let stories: [Story]
 
@@ -24,7 +25,7 @@ struct StoryViewer: View {
         self.stories = images.map { Story(image: $0) }
     }
 
-    var body: some View {
+   public  var body: some View {
         ZStack {
             ZStack {
                 if currentIndex < stories.count {
@@ -123,7 +124,8 @@ struct StoryViewer: View {
             }
             startTimer()
         } else {
-            dismiss()
+            presentationMode.wrappedValue.dismiss()
+
         }
     }
 
@@ -157,7 +159,8 @@ struct StoryViewer: View {
             }
             .onEnded { _ in
                 if dragOffset > 150 {
-                    dismiss()
+                    presentationMode.wrappedValue.dismiss()
+
                 } else {
                     withAnimation(.spring()) { dragOffset = 0 }
                     resume()
