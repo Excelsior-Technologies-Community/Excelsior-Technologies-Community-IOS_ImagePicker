@@ -5,22 +5,22 @@ import PackageDescription
 let package = Package(
     name: "ExcelsiorTechnologiesImagePicker",
     platforms: [
-        .iOS(.v14)
+        .iOS(.v14),
     ],
     products: [
         .library(
             name: "ExcelsiorTechnologiesImagePicker",
-            targets: ["ExcelsiorTechnologiesImagePicker"]
-        )
+            targets: ["ImageViewr"]
+        ),
     ],
     targets: [
         .target(
-            name: "ExcelsiorTechnologiesImagePicker",
-            path: "Sources/ExcelsiorTechnologiesImagePicker"
+            name: "ImageViewr",
+            path: "Sources/ImageViewr"
         ),
         .testTarget(
             name: "ExcelsiorTechnologiesImagePickerTests",
-            dependencies: ["ExcelsiorTechnologiesImagePicker"],
+            dependencies: ["ImageViewr"],
             path: "Tests"
         )
     ]
