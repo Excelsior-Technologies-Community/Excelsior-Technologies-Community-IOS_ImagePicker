@@ -8,12 +8,12 @@
 import SwiftUI
 import SwiftUI
 
-struct ProgressBar: View {
+public  struct ProgressBar: View {
     let numberOfSegments: Int
     let currentIndex: Int
     let progress: Double
 
-    var body: some View {
+    public  var body: some View {
         HStack(spacing: 4) {
             ForEach(0..<numberOfSegments, id: \.self) { index in
                 GeometryReader { geo in

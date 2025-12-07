@@ -6,10 +6,10 @@
 //
 import SwiftUI
 
-struct StoryView: View {
+public struct StoryView: View {
     let image: UIImage
 
-    var body: some View {
+   public  var body: some View {
         GeometryReader { geo in
             Image(uiImage: image)
                 .resizable()

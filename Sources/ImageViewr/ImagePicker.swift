@@ -7,10 +7,10 @@
 import SwiftUI
 import PhotosUI
 
-struct ImagePicker: UIViewControllerRepresentable {
+public struct ImagePicker: UIViewControllerRepresentable {
     @Binding var images: [UIImage]
 
-    func makeUIViewController(context: Context) -> PHPickerViewController {
+   public  func makeUIViewController(context: Context) -> PHPickerViewController {
         var config = PHPickerConfiguration()
         config.filter = .images
         config.selectionLimit = 0
@@ -20,18 +20,18 @@ struct ImagePicker: UIViewControllerRepresentable {
         return picker
     }
 
-    func updateUIViewController(_ uiViewController: PHPickerViewController, context: Context) {}
+    public   func updateUIViewController(_ uiViewController: PHPickerViewController, context: Context) {}
 
-    func makeCoordinator() -> Coordinator {
+    public   func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }
 
-    class Coordinator: NSObject, PHPickerViewControllerDelegate {
+    public   class Coordinator: NSObject, PHPickerViewControllerDelegate {
         let parent: ImagePicker
 
         init(_ parent: ImagePicker) { self.parent = parent }
 
-        func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        public  func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
             picker.dismiss(animated: true)
 
             results.forEach { item in
@@ -48,9 +48,9 @@ struct ImagePicker: UIViewControllerRepresentable {
 }
 
 // MARK: - Story Model
-struct Story: Identifiable {
-    let id = UUID()
-    let image: UIImage
-    let duration: Double = 5.0
+public struct Story: Identifiable {
+    public   let id = UUID()
+    public   let image: UIImage
+    public  let duration: Double = 5.0
 }
 
