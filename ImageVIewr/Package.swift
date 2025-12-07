@@ -1,25 +1,26 @@
 // swift-tools-version: 5.9
+
 import PackageDescription
 
 let package = Package(
-    name: "ImageViewr",
+    name: "ExcelsiorTechnologiesImagePicker",
     platforms: [
         .iOS(.v14)
     ],
     products: [
         .library(
-            name: "ImageViewr",
-            targets: ["ImageViewr"]
-        ),
+            name: "ExcelsiorTechnologiesImagePicker",
+            targets: ["ExcelsiorTechnologiesImagePicker"]
+        )
     ],
     targets: [
         .target(
-            name: "ImageViewr",
-            path: "Sources/ImageViewr"
+            name: "ExcelsiorTechnologiesImagePicker",
+            path: "Sources/ExcelsiorTechnologiesImagePicker"
         ),
         .testTarget(
-            name: "ImageViewrTests",
-            dependencies: ["ImageViewr"],
+            name: "ExcelsiorTechnologiesImagePickerTests",
+            dependencies: ["ExcelsiorTechnologiesImagePicker"],
             path: "Tests"
         )
     ]
