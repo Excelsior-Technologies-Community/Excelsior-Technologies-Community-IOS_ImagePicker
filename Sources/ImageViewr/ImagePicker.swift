@@ -6,11 +6,15 @@
 //
 import SwiftUI
 import PhotosUI
-
 public struct ImagePicker: UIViewControllerRepresentable {
-    @Binding var images: [UIImage]
 
-   public  func makeUIViewController(context: Context) -> PHPickerViewController {
+    @Binding public var images: [UIImage]
+
+    public init(images: Binding<[UIImage]>) {
+        self._images = images
+    }
+
+    public func makeUIViewController(context: Context) -> PHPickerViewController {
         var config = PHPickerConfiguration()
         config.filter = .images
         config.selectionLimit = 0
@@ -20,18 +24,20 @@ public struct ImagePicker: UIViewControllerRepresentable {
         return picker
     }
 
-    public   func updateUIViewController(_ uiViewController: PHPickerViewController, context: Context) {}
+    public func updateUIViewController(_ uiViewController: PHPickerViewController, context: Context) {}
 
-    public   func makeCoordinator() -> Coordinator {
+    public func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }
 
-    public   class Coordinator: NSObject, PHPickerViewControllerDelegate {
+    public class Coordinator: NSObject, PHPickerViewControllerDelegate {
         let parent: ImagePicker
 
-        init(_ parent: ImagePicker) { self.parent = parent }
+        public init(_ parent: ImagePicker) {
+            self.parent = parent
+        }
 
-        public  func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        public func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
             picker.dismiss(animated: true)
 
             results.forEach { item in
@@ -46,6 +52,7 @@ public struct ImagePicker: UIViewControllerRepresentable {
         }
     }
 }
+
 
 // MARK: - Story Model
 public struct Story: Identifiable {

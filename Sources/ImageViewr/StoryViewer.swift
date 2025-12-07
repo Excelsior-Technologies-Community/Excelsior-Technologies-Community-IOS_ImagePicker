@@ -21,7 +21,7 @@ public struct StoryViewer: View {
     @State private var dragOffset: CGFloat = 0
     @State private var goingForward = true
 
-    init(images: [UIImage]) {
+   public  init(images: [UIImage]) {
         self.stories = images.map { Story(image: $0) }
     }
 
