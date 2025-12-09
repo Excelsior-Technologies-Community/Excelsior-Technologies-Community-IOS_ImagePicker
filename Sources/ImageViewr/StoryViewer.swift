@@ -20,13 +20,17 @@ public struct StoryViewer: View {
     @State private var isPaused = false
     @State private var dragOffset: CGFloat = 0
     @State private var goingForward = true
+    @Environment(\.dismiss) private var dismiss
 
    public  init(images: [UIImage]) {
         self.stories = images.map { Story(image: $0) }
     }
-
-   public  var body: some View {
+    public var body: some View {
         ZStack {
+
+            // ========================
+            // STORY CONTENT + CONTROLS
+            // ========================
             ZStack {
                 if currentIndex < stories.count {
                     StoryView(image: stories[currentIndex].image)
@@ -35,6 +39,9 @@ public struct StoryViewer: View {
                 }
 
                 VStack {
+                    // --------------------------
+                    // TOP PROGRESS BAR
+                    // --------------------------
                     ProgressBar(numberOfSegments: stories.count,
                                 currentIndex: currentIndex,
                                 progress: progress)
@@ -42,7 +49,11 @@ public struct StoryViewer: View {
 
                     Spacer()
 
+                    // --------------------------
+                    // LEFT / RIGHT TAP ZONES
+                    // --------------------------
                     HStack(spacing: 0) {
+                        // LEFT → Previous Story
                         Color.clear
                             .contentShape(Rectangle())
                             .onTapGesture { previous() }
@@ -52,7 +63,7 @@ public struct StoryViewer: View {
                                 perform: {}
                             )
 
-
+                        // RIGHT → Next Story
                         Color.clear
                             .contentShape(Rectangle())
                             .onTapGesture { next() }
@@ -61,7 +72,6 @@ public struct StoryViewer: View {
                                 pressing: pressHandler,
                                 perform: {}
                             )
-
                     }
                 }
             }
@@ -69,12 +79,37 @@ public struct StoryViewer: View {
             .scaleEffect(1 - abs(dragOffset) / 2000)
             .opacity(1 - Double(abs(dragOffset)) / 400)
             .gesture(dragGesture)
+
+            // ========================
+            // TOP-RIGHT DISMISS BUTTON
+            // ========================
+            VStack {
+                HStack {
+                    Spacer()
+
+                    Button(action: {
+                        dismiss()   // SAME AS SWIPE-DOWN
+                    }) {
+                        Image(systemName: "xmark")
+                            .foregroundColor(.white)
+                            .font(.system(size: 18, weight: .bold))
+                            .padding(12)
+                            .background(Color.black.opacity(0.4))
+                            .clipShape(Circle())
+                    }
+                    .padding(.trailing, 20)
+                    .padding(.top, 50)
+                }
+
+                Spacer()
+            }
         }
-        .background(.black)
+        .background(Color.black)
         .ignoresSafeArea()
         .onAppear(perform: startTimer)
         .onDisappear(perform: stopTimer)
     }
+
 
     // MARK: - Animations
     private func animationDirection() -> AnyTransition {
