@@ -1,26 +1,26 @@
 
 
-# 📦 How to Add This Package to Your Project
+#  How to Add This Package to Your Project
 
 Follow these steps to add the Image Picker & Story Viewer package to any iOS project:
 
-### **1️⃣ Open Xcode → File → Add Package Dependency…**
+### ** Open Xcode → File → Add Package Dependency…**
 
-### **2️⃣ Paste this URL:**
+### **  Paste this URL:**
 
 ```
-https://github.com/Excelsior-Technologies-Community/Excelsior-Technologies-Community-IOS_ImagePicker.git
+https://github.com/Excelsior-Technologies-Community/IOS_ImagePicker
 ```
 
-### **3️⃣ Select the branch (main / Stages) or latest version**
+### **  Select the branch (main / Stages) or latest version**
 
-### **4️⃣ Add the package to your iOS app target**
+### **  Add the package to your iOS app target**
 
 That's it — Xcode will automatically download and link the package.
 
 ---
 
-# 🚀 How to Use in Your Project
+#   How to Use in Your Project
 
 Import the module at the top of your Swift file:
 
@@ -81,5 +81,5 @@ struct ContentView: View {
 
 ---
 
-# 🎉 Done!
+#  Done!
  
