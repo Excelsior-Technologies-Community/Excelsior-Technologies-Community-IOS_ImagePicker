@@ -10,17 +10,17 @@ let package = Package(
     products: [
         .library(
             name: "ExcelsiorTechnologiesImagePicker",
-            targets: ["ImageViewr"]
+            targets: ["ImageViewer"]
         ),
     ],
     targets: [
         .target(
-            name: "ImageViewr",
-            path: "Sources/ImageViewr"
+            name: "ImageViewer",
+            path: "Sources/ImageViewer"
         ),
         .testTarget(
             name: "ExcelsiorTechnologiesImagePickerTests",
-            dependencies: ["ImageViewr"],
+            dependencies: ["ImageViewer"],
             path: "Tests"
         )
     ]
