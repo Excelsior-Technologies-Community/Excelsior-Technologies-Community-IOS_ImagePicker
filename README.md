@@ -25,7 +25,7 @@ That's it — Xcode will automatically download and link the package.
 Import the module at the top of your Swift file:
 
 ```swift
-import ImageViewr
+import ImageViewer
 ```
 
 Then use this example to:
@@ -37,7 +37,7 @@ Here is the **exact code developers should copy**:
 
 ```swift
 import SwiftUI
-import ImageViewr
+import ImageViewer
 
 struct ContentView: View {
 
